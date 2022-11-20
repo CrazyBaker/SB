@@ -21,6 +21,22 @@ module.exports = {
         test: /\.[jt]sx?$/,
         use: ["ts-loader"],
       },
+      {
+        test: /\.s[ac]ss$/,
+        use: [
+          {
+            loader: "css-loader",
+            options: {
+              modules: {
+                mode: "local",
+                localIdentName: "[name]__[local]--[hash:base64:5]",
+                exportOnlyLocals: true,
+              },
+            },
+          },
+          "sass-loader",
+        ],
+      },
     ],
   },
   optimization: {
